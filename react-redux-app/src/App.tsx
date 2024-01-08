@@ -34,11 +34,7 @@ function App({ value, onIncrease, onDecrease }: IProps) {
         <input type="text" value={toDoValue} onChange={handleChange} />
         <button type="submit">제출</button>
       </form>
-      {toDos?.map((toDo, index) => (
-        <ul>
-          <li key={index}>{toDo}</li>
-        </ul>
-      ))}
+      <ul>{toDos?.map((toDo, index) => <li key={index}>{toDo}</li>)}</ul>
     </div>
   );
 }
