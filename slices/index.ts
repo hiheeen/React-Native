@@ -1,7 +1,12 @@
 import { combineReducers } from 'redux';
 import auth from './auth';
+import posts from './posts';
+import { counterReducer } from './counter';
+
 const rootReducer = combineReducers({
   auth,
+  posts,
+  counter: counterReducer,
 });
 
 // rootReducer 함수의 반환값 타입을 RootState type alias로 지정

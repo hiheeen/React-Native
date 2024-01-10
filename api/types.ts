@@ -3,3 +3,8 @@ export interface Post {
   title: string;
   body: string;
 }
+export interface PostState {
+  loading: string;
+  data: Post[] | null;
+  error: Error | null;
+}

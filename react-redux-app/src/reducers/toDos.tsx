@@ -13,7 +13,7 @@ interface Action {
 //       return state;
 //   }
 // };
-// export const addToDoBy = (text: string) => ({ type: 'ADD_TODO', text });
+// export const addToDoBy = (text: string) => ({ type: 'ADD_TODO', text }); => reducer 함수, text를 받아 action객체 완성하여 전달
 // export default toDos;
 const initialState: string[] = [];
 const toDosSlice = createSlice({
