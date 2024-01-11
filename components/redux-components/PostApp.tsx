@@ -2,9 +2,9 @@ import { Button, SafeAreaView, StyleSheet, Text, View } from 'react-native';
 import React from 'react';
 import { useSelector } from 'react-redux';
 import { PostState } from '../../api/types';
-import { RootState } from '../../slices';
+import { RootState } from '../../redux/slices';
 import { useDispatch } from 'react-redux';
-import { fetchPosts } from '../../slices/posts';
+import { fetchPosts } from '../../redux/slices/posts';
 
 const PostApp = () => {
   const posts = useSelector((state: RootState) => state.posts.data); // RootState는 reducer가 반환하는 무언가의 타입을 유츄한 것.

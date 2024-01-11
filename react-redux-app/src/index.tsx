@@ -8,6 +8,8 @@ import { applyMiddleware, createStore } from 'redux';
 import counter from './reducers';
 import rootReducer from './reducers';
 import { Provider } from 'react-redux';
+import { getCounter } from './reducers/counterError';
+import { configureStore } from '@reduxjs/toolkit';
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
 );
@@ -18,7 +20,7 @@ const loggerMiddleWare = (store: any) => (next: any) => (action: any) => {
   console.log('state', store.getState());
 };
 const middleWare = applyMiddleware(loggerMiddleWare);
-const store = createStore(rootReducer, middleWare);
+const store = configureStore({ reducer: rootReducer });
 
 const render = () =>
   root.render(

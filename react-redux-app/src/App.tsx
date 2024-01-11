@@ -19,7 +19,7 @@ function App({ value, onIncrease, onDecrease }: IProps) {
   };
   const updateToDo = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    dispatch(addToDoBy(toDoValue));
+    dispatch(addToDoBy(toDoValue)); // dispatch가 reducer에게 action을 전달해주는 역할.
     setToDoValue('');
   };
   return (

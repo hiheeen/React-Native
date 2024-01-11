@@ -1,7 +1,7 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
-import getPosts from '../api/getPosts';
+import getPosts from '../../api/getPosts';
 import { PayloadAction } from '@reduxjs/toolkit';
-import { Post, PostState } from '../api/types';
+import { Post, PostState } from '../../api/types';
 export const fetchPosts = createAsyncThunk<Post[]>(
   'posts/fetchPosts',
   getPosts

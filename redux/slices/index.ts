@@ -1,12 +1,14 @@
 import { combineReducers } from 'redux';
 import auth from './auth';
 import posts from './posts';
-import { counterReducer } from './counter';
-
+import counter, { counterReducer } from './counter';
+import todo from './todo';
 const rootReducer = combineReducers({
   auth,
   posts,
   counter: counterReducer,
+  error: counter, // export default counterSlice.reducer를 했기 때문에 어떤 이름으로 가져와도 상관없음. 내가 지정하기
+  todo,
 });
 
 // rootReducer 함수의 반환값 타입을 RootState type alias로 지정

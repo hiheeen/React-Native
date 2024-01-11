@@ -1,9 +1,9 @@
 import { Button, SafeAreaView, StyleSheet, Text, View } from 'react-native';
 import React from 'react';
 import { useSelector } from 'react-redux';
-import { RootState } from '../../slices';
+import { RootState } from '../../redux/slices';
 import { useDispatch } from 'react-redux';
-import { authorize, logout } from '../../slices/auth';
+import { authorize, logout } from '../../redux/slices/auth';
 import useUser from '../../hooks/useUser';
 import useAuthActions from '../../hooks/useAuthActions';
 

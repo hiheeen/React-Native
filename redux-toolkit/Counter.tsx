@@ -1,15 +1,24 @@
+import { createReducer, createAction } from '@reduxjs/toolkit';
 import { useSelector } from 'react-redux';
-import { RootState } from '../slices';
+import { RootState } from '../redux/slices';
 import { useDispatch } from 'react-redux';
-import { decrement, increment } from '../slices/counter';
+import { decrement, increment } from '../redux/slices/counter';
 import { Button, SafeAreaView } from 'react-native';
-import { StyleSheet, Text, View } from 'react-native';
+import {
+  KeyboardAvoidingView,
+  Pressable,
+  StyleSheet,
+  Text,
+  TextInput,
+  View,
+} from 'react-native';
 import React from 'react';
+const count = useSelector((state: RootState) => state.counter.value);
+
+// authorize와 logout 액션을 dispatch 함수와 바인딩하는 역할.
+// redux가 제공하는 유틸 함수
+const dispatch = useDispatch();
 const Counter = () => {
-  const count = useSelector((state: RootState) => state.counter.value);
-
-  const dispatch = useDispatch();
-
   return (
     <SafeAreaView style={styles.block}>
       <View style={styles.view}>

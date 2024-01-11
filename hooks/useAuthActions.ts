@@ -1,5 +1,5 @@
 import { useDispatch } from 'react-redux';
-import { authorize, logout } from '../slices/auth';
+import { authorize, logout } from '../redux/slices/auth';
 import { bindActionCreators } from 'redux';
 import { useMemo } from 'react';
 const useAuthActions = () => {
