@@ -12,7 +12,7 @@ export default function App(): JSX.Element {
     <Provider store={store}>
       {/* <AuthApp /> */}
       {/* <PostApp /> */}
-      <Counter />
+      <MainScreen />
     </Provider>
   );
 }

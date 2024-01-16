@@ -3,17 +3,35 @@ import React from 'react';
 import DeleteButton from '../assets/delete.svg';
 import CheckBoxChecked from '../assets/checkbox-checked.svg';
 import CheckBoxUnChecked from '../assets/checkbox-unchecked.svg';
-const TodoItem = () => {
+import { useDispatch } from 'react-redux';
+import { deleteTodo, updateTodo } from '../redux/slices/todo';
+const TodoItem = ({ state, text, id }) => {
+  const dispatch = useDispatch();
   return (
     <View style={styles.itemContainer}>
-      <Pressable hitSlop={10} style={styles.itemCheckbox}>
-        <CheckBoxChecked style={styles.itemCheckboxCheckedIcon} />
-        <CheckBoxUnChecked />
-      </Pressable>
-      <Text style={[styles.itemText, styles.itemTextChecked]}>코딩하기</Text>
       <Pressable
-        style={[styles.deleteButton, styles.deleteButtonDone]}
         hitSlop={10}
+        style={styles.itemCheckbox}
+        onPress={() => dispatch(updateTodo(id))}
+      >
+        {state === 'todo' ? (
+          <CheckBoxUnChecked />
+        ) : (
+          <CheckBoxChecked style={styles.itemCheckboxCheckedIcon} />
+        )}
+      </Pressable>
+      <Text
+        style={[styles.itemText, state === 'done' && styles.itemTextChecked]}
+      >
+        {text}
+      </Text>
+      <Pressable
+        style={[
+          styles.deleteButton,
+          state === 'done' && styles.deleteButtonDone,
+        ]}
+        hitSlop={10}
+        onPress={() => dispatch(deleteTodo(id))}
       >
         <DeleteButton />
       </Pressable>
