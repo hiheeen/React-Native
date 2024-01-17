@@ -1,16 +1,40 @@
-import { FlatList, Platform, StyleSheet, Text, View } from 'react-native';
+import {
+  FlatList,
+  Platform,
+  StyleSheet,
+  Text,
+  TouchableOpacity,
+  View,
+} from 'react-native';
 import React from 'react';
 import InputForm from '../components/InputForm';
 import TodoItem from '../components/TodoItem';
 import { useSelector } from 'react-redux';
+import { getAuth, signOut } from 'firebase/auth';
+import { useNavigation } from '@react-navigation/native';
 
 const MainScreen = () => {
   const todos = useSelector((state) => state.todo.todos);
   const todosTasks = todos.filter((item) => item.state === 'todo');
   const completedTasks = todos.filter((item) => item.state === 'done');
+  const auth = getAuth();
+  const navigation = useNavigation();
+  const handleLogout = async () => {
+    try {
+      await signOut(auth);
+      navigation.replace('Login');
+    } catch (error) {
+      console.log(error.message);
+    }
+  };
   return (
     <View style={styles.container}>
-      <Text style={styles.pageTitle}>ToDo App</Text>
+      <View style={styles.headerContainer}>
+        <Text style={styles.pageTitle}>ToDo App</Text>
+        <TouchableOpacity style={styles.logoutButton} onPress={handleLogout}>
+          <Text style={styles.logoutText}>-</Text>
+        </TouchableOpacity>
+      </View>
       <View style={styles.listView}>
         <Text style={styles.listTitle}>할 일</Text>
         {todosTasks.length !== 0 ? (
@@ -81,5 +105,24 @@ const styles = StyleSheet.create({
     fontSize: 15,
     lineHeight: 20,
     color: '#737373',
+  },
+  headerContainer: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+  },
+  logoutButton: {
+    justifyContent: 'center',
+    alignItems: 'center',
+    borderRadius: 4,
+    backgroundColor: 'rgba(0,0,0,0.7)',
+    width: 42,
+    height: 42,
+    marginBottom: 25,
+    marginRight: 20,
+  },
+  logoutText: {
+    color: 'white',
+    fontSize: 25,
   },
 });
